@@ -51,8 +51,9 @@ public class Clcltr {
         return result;
     }
 
-    private int plus(int numberOne, int numberTwo){
-        return numberOne + numberTwo;
+    private int plus(int firstNumber, int secondNumber){
+        return firstNumber + secondNumber;
     }
 
 }
+
