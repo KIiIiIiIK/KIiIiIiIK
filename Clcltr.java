@@ -9,13 +9,9 @@ public class Clcltr {
         this.scanner = new Scanner(System.in);
     }
 
-    public void calculate(){
+    public void calculate() throws InputMismatchException {
         while (!"q".equals(operation)) {
-            try {
-                System.out.println(calculationStep());
-            } catch (InputMismatchException ex){
-                System.out.println("Wrong input data!");
-            }
+            System.out.println(calculationStep());
         }
     }
 
@@ -24,14 +20,9 @@ public class Clcltr {
         int firstNumber = Integer.parseInt(scanner.nextLine());
         System.out.println("enter second number:");
         int secondNumber = Integer.parseInt(scanner.nextLine());
-        System.out.println("enter operation (only '+' is available) to perform or q if you want to quit:");
+        System.out.println("enter operation ('+' or '-' or '/' or '*') to perform or q if you want to quit:");
 
         operation = scanner.nextLine();
-
-        //to remove when other operations added
-        if (!"+".equals(operation))  {
-            throw new UnsupportedOperationException(String.format("The operation '%s' is not supported", operation));
-        }
 
         return performOperation(firstNumber, secondNumber);
     }
@@ -43,6 +34,15 @@ public class Clcltr {
             case "+":
                 result = plus(firstNumber, secondNumber);
                 break;
+            case "-":
+                result = minus(firstNumber, secondNumber);
+                break;
+            case "/":
+                result = divide(firstNumber, secondNumber);
+                break;
+            case "*":
+                result = multiply(firstNumber, secondNumber);
+                break;
             default:
                 result = 0;
                 break;
@@ -52,8 +52,12 @@ public class Clcltr {
     }
 
     private int plus(int firstNumber, int secondNumber){
-        return firstNumber + secondNumber;
-    }
-
+        return firstNumber + secondNumber;}
+    private int minus(int firstNumber, int secondNumber){
+        return firstNumber - secondNumber;}
+    private int divide(int firstNumber, int secondNumber){
+        return firstNumber / secondNumber;}
+    private int multiply(int firstNumber, int secondNumber){
+        return firstNumber * secondNumber;}
 }
 
